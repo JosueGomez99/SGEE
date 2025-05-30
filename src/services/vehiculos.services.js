@@ -6,9 +6,7 @@ class vehiculosServices {
 
   async find() {
     const res = await models.vehiculos.findAll();
-    if(res.length === 0){
-      throw new Error("No se encontraron vehículos")
-    }
+    // Devuelve el array aunque esté vacío
     return res;
   }
   async findOne(id) {

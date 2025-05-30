@@ -12,41 +12,17 @@ class espacioServices {
     this.sequelize = sequelize;
   }
 
-  // async find() {
-  //   const res = await models.espacio.findAll();
-  //   if (res.length === 0) {
-  //     throw new Error("No se encontraron espacios");
-  //   }
-  //   return res;
-  // }
-
-async find() {
-  const res = await models.espacio.findAll({
-    include: [
-      {
-        model: models.sotanos,
-        as: 'sotano', 
-        attributes: ['nombre']
-      },
-      {
-        model: models.estado_espacio,
-        as: 'estado_espacio', 
-        attributes: ['nombre_estado']
-      },
-      {
-        model: models.TipoEspacio,
-        as: 'tipo_espacio',
-        attributes: ['nombre_tipoespacio']
-      }
-    ]
-  });
-
-  if (res.length === 0) {
-    throw new Error("No se encontraron espacios");
+  async find() {
+    const res = await models.espacio.findAll({
+      include: [
+        { model: models.sotanos, as: 'sotano', attributes: ['nombre'] },
+        { model: models.estado_espacio, as: 'estado_espacio', attributes: ['nombre_estado'] },
+        { model: models.TipoEspacio, as: 'tipo_espacio', attributes: ['nombre_tipoespacio'] }
+      ]
+    });
+    // Devuelve el array aunque esté vacío
+    return res;
   }
-
-  return res;
-}
 
   async findOne(id) {
     const res = await models.espacio.findByPk(id);

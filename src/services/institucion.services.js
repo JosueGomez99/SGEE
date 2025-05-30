@@ -6,9 +6,7 @@ class institucionServices {
 
   async find() {
     const res = await models.institucion.findAll();
-    if (res.length === 0) {
-      throw new Error("No se encontraron institución");
-    }
+    // Devuelve el array aunque esté vacío
     return res;
   }
   async findOne(id) {

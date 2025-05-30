@@ -6,9 +6,7 @@ class funcionarioServices {
 
   async find() {
     const res = await models.funcionarios.findAll();
-    if (res.length === 0) {
-      throw new Error("No se encontraron funcionarios");
-    }
+    // Devuelve el array aunque esté vacío
     return res;
   }
   async findOne(id) {
