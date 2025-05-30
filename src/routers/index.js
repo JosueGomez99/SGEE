@@ -9,6 +9,7 @@ const tipoespacioRouter = require("./tipoespacio.route");
 const funcionariosRouter = require("./funcionarios.route");
 const estadoespacioRouter = require("./estadoespacio.route");
 const asignacioninstitucionespacioRouter = require("./asignacioninstitucionespacio.route");
+const usuariosRouter = require("./usuarios.route");
 
 
 
@@ -24,6 +25,7 @@ function routeApi(app) {
    router.use("/funcionarios", funcionariosRouter);
    router.use("/estadoespacio", estadoespacioRouter);
     router.use("/asignacioninstitucion", asignacioninstitucionespacioRouter);
+    router.use("/usuarios", usuariosRouter);
 
     /*
         Institucion.................
