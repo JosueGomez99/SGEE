@@ -16,7 +16,7 @@ export default function FormularioUsuario({ onUsuarioCreado }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{ marginBottom: 24 }}>
       <h2>Agregar Usuario</h2>
       <input
         type="text"
@@ -24,6 +24,7 @@ export default function FormularioUsuario({ onUsuarioCreado }) {
         value={nombre_usuario}
         onChange={(e) => setNombre(e.target.value)}
         required
+        style={{ marginRight: 8 }}
       />
       <input
         type="email"
@@ -31,6 +32,7 @@ export default function FormularioUsuario({ onUsuarioCreado }) {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
+        style={{ marginRight: 8 }}
       />
       <button type="submit">Agregar</button>
       {mensaje && <p>{mensaje}</p>}

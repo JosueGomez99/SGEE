@@ -10,6 +10,8 @@ const { espacio, espacioSchema } = require("./espacio.model");
 const {asignacionInstitucionEspacio,asignacionInstitucionEspacioSchema,} = require("./asignacion_espacioinstitucion.model");
 const {asignacionFuncionarioEspacio,asignacionFuncionarioEspacioSchema,} = require("./asignacion_funcionarioespacio.model");
 const { estadofuncionario, estadofuncionarioSchema } = require('./estadofuncionario.model');
+const { usuario, usuarioSchema } = require("../models/usuarios.model");
+const { rol, rolSchema } = require("../models/rol.model");
 
 
 
@@ -27,6 +29,8 @@ function setupModels(sequelize) {
   espacio.init(espacioSchema, espacio.config(sequelize));
   asignacionInstitucionEspacio.init(asignacionInstitucionEspacioSchema, asignacionInstitucionEspacio.config(sequelize));
   asignacionFuncionarioEspacio.init(asignacionFuncionarioEspacioSchema, asignacionFuncionarioEspacio.config(sequelize));
+  usuario.init(usuarioSchema, usuario.config(sequelize));
+  rol.init(rolSchema, rol.config(sequelize));
 
   // Asociar todos los modelos después
   tipovehiculo.associate(sequelize.models);
@@ -39,6 +43,8 @@ function setupModels(sequelize) {
   asignacionInstitucionEspacio.associate(sequelize.models);
   asignacionFuncionarioEspacio.associate(sequelize.models);
   estadofuncionario.associate?.(sequelize.models);
+  usuario.associate(sequelize.models);
+  rol.associate(sequelize.models);
 }
 
 

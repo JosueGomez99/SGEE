@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import logo from './logo.svg';
 import './App.css';
-import ListaUsuarios from "./ListaUsuarios";
-import FormularioUsuario from "./FormularioUsuario";
+import ListaUsuarios from "./usuarios/ListaUsuarios";
+import FormularioUsuario from "./usuarios/FormularioUsuario";
 
 function App() {
   const [actualizar, setActualizar] = useState(false);
