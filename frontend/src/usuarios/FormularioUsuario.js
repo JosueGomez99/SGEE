@@ -42,15 +42,28 @@ const styles = {
   },
 };
 
+const roles = [
+  { id: 1, nombre: "Administrador" },
+  { id: 2, nombre: "Usuario" },
+];
+
 export default function FormularioUsuario({ onUsuarioCreado }) {
-  const [nombre_usuario, setNombre] = useState("");
+  const [form, setForm] = useState({
+    nombre_usuario: "",
+    contrasena: "",
+    id_rol: "",
+  });
   const [mensaje, setMensaje] = useState("");
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await createUsuario({ nombre_usuario });
+    await createUsuario({ ...form, id_rol: Number(form.id_rol) });
     setMensaje("Usuario creado correctamente");
-    setNombre("");
+    setForm({ nombre_usuario: "", contrasena: "", id_rol: "" });
     if (onUsuarioCreado) onUsuarioCreado();
     setTimeout(() => setMensaje(""), 2000);
   };
@@ -60,12 +73,36 @@ export default function FormularioUsuario({ onUsuarioCreado }) {
       <div style={styles.title}>Agregar Usuario</div>
       <input
         type="text"
+        name="nombre_usuario"
         placeholder="Nombre"
-        value={nombre_usuario}
-        onChange={(e) => setNombre(e.target.value)}
+        value={form.nombre_usuario}
+        onChange={handleChange}
         required
         style={styles.input}
       />
+      <input
+        type="password"
+        name="contrasena"
+        placeholder="Contraseña"
+        value={form.contrasena}
+        onChange={handleChange}
+        required
+        style={styles.input}
+      />
+      <select
+        name="id_rol"
+        value={form.id_rol}
+        onChange={handleChange}
+        required
+        style={styles.input}
+      >
+        <option value="">Selecciona un rol</option>
+        {roles.map((rol) => (
+          <option key={rol.id} value={rol.id}>
+            {rol.nombre}
+          </option>
+        ))}
+      </select>
       <button type="submit" style={styles.button}>
         Agregar
       </button>
