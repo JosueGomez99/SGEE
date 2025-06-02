@@ -10,6 +10,7 @@ export default function FormularioEspacio({ onEspacioCreado }) {
     await createEspacio({ nombre_espacio });
     setMensaje("Espacio creado correctamente");
     setNombre("");
+    // Llama a la función para recargar la lista de espacios inmediatamente
     if (onEspacioCreado) onEspacioCreado();
     setTimeout(() => setMensaje(""), 2000);
   };
