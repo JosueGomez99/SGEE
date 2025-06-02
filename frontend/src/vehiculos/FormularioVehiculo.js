@@ -40,7 +40,7 @@ export default function FormularioVehiculo({ onVehiculoCreado }) {
       <select name="idtipoVeh" value={form.idtipoVeh} onChange={handleChange} required style={{padding:'8px 12px',border:'1px solid #ccc',borderRadius:4,marginRight:12,fontSize:16}}>
         <option value="">Selecciona tipo de vehículo</option>
         {tipos.map((t) => (
-          <option key={t.idtipoVeh} value={t.idtipoVeh}>{t.nombre}</option>
+          <option key={t.idtipoVeh} value={t.idtipoVeh}>{t.tipoVeh}</option>
         ))}
       </select>
       <button type="submit" style={{background:'#3498db',color:'#fff',border:'none',borderRadius:4,padding:'8px 18px',cursor:'pointer',fontWeight:600,fontSize:16,transition:'background 0.2s'}}>Agregar</button>

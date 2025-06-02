@@ -41,7 +41,7 @@ export default function ListaVehiculos({ reload }) {
 
   const getTipoNombre = (idtipoVeh) => {
     const tipo = tipos.find((t) => t.idtipoVeh === idtipoVeh);
-    return tipo ? tipo.nombre : idtipoVeh;
+    return tipo ? tipo.tipoVeh : idtipoVeh;
   };
 
   if (loading) return <p>Cargando vehículos...</p>;
