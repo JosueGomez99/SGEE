@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import Login from "./usuarios/Login";
-import ListaUsuarios from "./usuarios/ListaUsuarios";
-import FormularioUsuario from "./usuarios/FormularioUsuario";
-import ListaVehiculos from "./vehiculos/ListaVehiculos";
+import Usuarios from "./usuarios/Usuarios";
 import FormularioVehiculo from "./vehiculos/FormularioVehiculo";
+import ListaVehiculos from "./vehiculos/ListaVehiculos";
 import ListaEspacios from "./espacios/ListaEspacios";
 import ListaFuncionarios from "./funcionarios/ListaFuncionarios";
 import FormularioFuncionario from "./funcionarios/FormularioFuncionario";
@@ -31,7 +30,7 @@ function BienvenidoAdmin({ onLogout }) {
         <button onClick={() => setVista("instituciones")} style={vista==="instituciones"?navBtnActive:navBtn}>Instituciones</button>
         <button onClick={onLogout} style={{marginLeft:24, background:'#e74c3c', color:'#fff', border:'none', borderRadius:6, padding:'10px 18px', fontWeight:700, fontSize:16, cursor:'pointer'}}>Cerrar sesión</button>
       </nav>
-      {vista === "usuarios" && (<><FormularioUsuario /><ListaUsuarios /></>)}
+      {vista === "usuarios" && (<Usuarios />)}
       {vista === "vehiculos" && (<><FormularioVehiculo /><ListaVehiculos /></>)}
       {vista === "espacios" && (<ListaEspacios />)}
       {vista === "funcionarios" && (<><FormularioFuncionario /><ListaFuncionarios /></>)}

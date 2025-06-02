@@ -12,9 +12,12 @@ const create = async (req, res) => {
 
 const get = async (req, res) => {
   try {
+    console.log("GET /vehiculos llamado");
     const response = await service.find();
+    console.log("Respuesta de service.find():", response);
     res.json(response);
   } catch (error) {
+    console.error("Error en GET /vehiculos:", error);
     res.status(500).send({ success: false, message: error.message });
   }
 };

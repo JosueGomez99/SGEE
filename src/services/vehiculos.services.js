@@ -5,12 +5,12 @@ class vehiculosServices {
   constructor() { }
 
   async find() {
-    const res = await models.vehiculos.findAll();
+    const res = await models.vehiculo.findAll(); // Cambiado a singular
     // Devuelve el array aunque esté vacío
     return res;
   }
   async findOne(id) {
-    const res = await models.vehiculos.findByPk(id);
+    const res = await models.vehiculo.findByPk(id); // Cambiado a singular
     if (!res) {
       throw new Error("Vehiculo no encontrado");
   }
@@ -19,55 +19,44 @@ class vehiculosServices {
 
   async create(data) {
     try {
-      const { error, value } = vehiculosSchema.validate(data, { stripUnKnown: true });
+      const { error, value } = vehiculosSchema.validate(data, { stripUnknown: true });
       if (error) {
         throw new Error(`Error de validación: ${error.details[0].message}`);
       }
-      const vehiculo = await models.vehiculos.create(value);
+      const vehiculo = await models.vehiculo.create(value); // Cambiado a singular
       return vehiculo;
     } catch (error) {
       console.error("Error al crear vehiculo", error.message);
+      throw error;
     }
 
   }
   async update(id, data) {
 
     try{
-      const { error, value } = vehiculosSchema.validate(data, { stripUnKnown: true });
+      const { error, value } = vehiculosSchema.validate(data, { stripUnknown: true });
       if (error) {
         throw new Error(`Error de validación: ${error.details[0].message}`);
       }
 
-      const vehiculos = await this.findOne(id);
-      if(!vehiculos){
+      const vehiculo = await this.findOne(id); // Cambiado a singular
+      if(!vehiculo){
         throw new Error("vehiculo no encontrado");
 
       }
-      await vehiculos.update(value);
+      await vehiculo.update(value);
 
-      return vehiculos;
+      return vehiculo;
     }catch(error){
       throw error;
     }
     
   }
   async delete(id) {
-    try {
-      if(!id|| isNaN(id)){
-        throw new Error("ID Inválido ")
-      }
-      const vehiculos = await this.findOne(id);
-      if(!vehiculos){
-        throw new Error("Vehiculo no encontrado");
-
-      }
-      await vehiculos.destroy();
-      return {success:true,message:"Vehiculo eliminado correctamente"}
-    } catch (error) {
-      throw error;
-    }
-    
-   
+    const vehiculo = await this.findOne(id); // Cambiado a singular
+    await vehiculo.destroy();
+    return { message: "Vehiculo eliminado" };
   }
 }
+
 module.exports = vehiculosServices;

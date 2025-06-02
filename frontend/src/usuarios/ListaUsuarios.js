@@ -46,7 +46,7 @@ const styles = {
   }
 };
 
-export default function ListaUsuarios({ onSelectUsuario }) {
+export default function ListaUsuarios({ onSelectUsuario, reload }) {
   const [usuarios, setUsuarios] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -72,7 +72,7 @@ export default function ListaUsuarios({ onSelectUsuario }) {
   useEffect(() => {
     cargarUsuarios();
     // eslint-disable-next-line
-  }, []);
+  }, [reload]);
 
   const handleDelete = async (id_usuario) => {
     await deleteUsuario(id_usuario);
