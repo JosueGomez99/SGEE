@@ -7,4 +7,6 @@ const vehiculosSchema = Joi.object({
   idtipoVeh: Joi.number().integer().required()
 });
 
-module.exports = vehiculosSchema;
+module.exports = {
+  vehiculosSchema
+};

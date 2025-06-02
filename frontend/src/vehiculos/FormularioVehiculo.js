@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createVehiculo } from "./apiVehiculos";
+import { getTiposVehiculo } from "./apiTipovehiculo";
 
 export default function FormularioVehiculo({ onVehiculoCreado }) {
   const [form, setForm] = useState({
@@ -9,7 +10,12 @@ export default function FormularioVehiculo({ onVehiculoCreado }) {
     marca: "",
     idtipoVeh: ""
   });
+  const [tipos, setTipos] = useState([]);
   const [mensaje, setMensaje] = useState("");
+
+  useEffect(() => {
+    getTiposVehiculo().then(setTipos);
+  }, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -31,7 +37,12 @@ export default function FormularioVehiculo({ onVehiculoCreado }) {
       <input name="modelo" type="text" placeholder="Modelo" value={form.modelo} onChange={handleChange} required style={{padding:'8px 12px',border:'1px solid #ccc',borderRadius:4,marginRight:12,fontSize:16}} />
       <input name="color" type="text" placeholder="Color" value={form.color} onChange={handleChange} required style={{padding:'8px 12px',border:'1px solid #ccc',borderRadius:4,marginRight:12,fontSize:16}} />
       <input name="marca" type="text" placeholder="Marca" value={form.marca} onChange={handleChange} required style={{padding:'8px 12px',border:'1px solid #ccc',borderRadius:4,marginRight:12,fontSize:16}} />
-      <input name="idtipoVeh" type="number" placeholder="ID Tipo Vehículo" value={form.idtipoVeh} onChange={handleChange} required style={{padding:'8px 12px',border:'1px solid #ccc',borderRadius:4,marginRight:12,fontSize:16}} />
+      <select name="idtipoVeh" value={form.idtipoVeh} onChange={handleChange} required style={{padding:'8px 12px',border:'1px solid #ccc',borderRadius:4,marginRight:12,fontSize:16}}>
+        <option value="">Selecciona tipo de vehículo</option>
+        {tipos.map((t) => (
+          <option key={t.idtipoVeh} value={t.idtipoVeh}>{t.nombre}</option>
+        ))}
+      </select>
       <button type="submit" style={{background:'#3498db',color:'#fff',border:'none',borderRadius:4,padding:'8px 18px',cursor:'pointer',fontWeight:600,fontSize:16,transition:'background 0.2s'}}>Agregar</button>
       {mensaje && <div style={{color:'#27ae60',marginTop:12,fontWeight:500}}>{mensaje}</div>}
     </form>

@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import Login from "./usuarios/Login";
 import Usuarios from "./usuarios/Usuarios";
-import FormularioVehiculo from "./vehiculos/FormularioVehiculo";
-import ListaVehiculos from "./vehiculos/ListaVehiculos";
 import ListaEspacios from "./espacios/ListaEspacios";
 import ListaFuncionarios from "./funcionarios/ListaFuncionarios";
 import FormularioFuncionario from "./funcionarios/FormularioFuncionario";
 import ListaInstituciones from "./instituciones/ListaInstituciones";
 import FormularioInstitucion from "./instituciones/FormularioInstitucion";
+import Vehiculos from "./vehiculos/Vehiculos";
 
 const navBtn = {
   background: '#f0f6ff', color: '#2980ef', border: 'none', borderRadius: 6, padding: '10px 18px', fontWeight: 700, fontSize: 15, cursor: 'pointer', transition: 'background 0.2s'
@@ -31,7 +30,7 @@ function BienvenidoAdmin({ onLogout }) {
         <button onClick={onLogout} style={{marginLeft:24, background:'#e74c3c', color:'#fff', border:'none', borderRadius:6, padding:'10px 18px', fontWeight:700, fontSize:16, cursor:'pointer'}}>Cerrar sesión</button>
       </nav>
       {vista === "usuarios" && (<Usuarios />)}
-      {vista === "vehiculos" && (<><FormularioVehiculo /><ListaVehiculos /></>)}
+      {vista === "vehiculos" && (<Vehiculos />)}
       {vista === "espacios" && (<ListaEspacios />)}
       {vista === "funcionarios" && (<><FormularioFuncionario /><ListaFuncionarios /></>)}
       {vista === "instituciones" && (<><FormularioInstitucion /><ListaInstituciones /></>)}
