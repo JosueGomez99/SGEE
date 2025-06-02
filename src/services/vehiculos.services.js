@@ -19,7 +19,16 @@ class vehiculosServices {
     return res;
   }
   async findOne(id) {
-    const res = await models.vehiculo.findByPk(id);
+    const res = await models.vehiculo.findByPk(id, {
+      attributes: [
+        'id_vehiculo',
+        'placa',
+        'modelo',
+        'color',
+        'marca',
+        'idtipoVeh'
+      ]
+    });
     if (!res) {
       throw new Error("Vehiculo no encontrado");
     }
