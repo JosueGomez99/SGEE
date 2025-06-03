@@ -10,8 +10,7 @@ const funcionariosRouter = require("./funcionarios.route");
 const estadoespacioRouter = require("./estadoespacio.route");
 const asignacioninstitucionespacioRouter = require("./asignacioninstitucionespacio.route");
 const usuariosRouter = require("./usuarios.route");
-
-
+const estadoFuncionarioRoute = require("./estadofuncionario.route");
 
 function routeApi(app) {
   const router = express.Router();
@@ -22,12 +21,13 @@ function routeApi(app) {
   router.use("/institucion", institucionRouter);
   router.use("/espacios", espacioRouter);
   router.use("/tipoespacio", tipoespacioRouter);
-   router.use("/funcionarios", funcionariosRouter);
-   router.use("/estadoespacio", estadoespacioRouter);
-    router.use("/asignacioninstitucion", asignacioninstitucionespacioRouter);
-    router.use("/usuarios", usuariosRouter);
+  router.use("/funcionarios", funcionariosRouter);
+  router.use("/estadoespacio", estadoespacioRouter);
+  router.use("/asignacioninstitucion", asignacioninstitucionespacioRouter);
+  router.use("/usuarios", usuariosRouter);
+  app.use("/api/v2/estadofuncionario", estadoFuncionarioRoute);
 
-    /*
+  /*
         Institucion.................
         Vehiculos
         Funcionarios

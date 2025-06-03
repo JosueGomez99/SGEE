@@ -19,3 +19,12 @@ export async function deleteFuncionario(id) {
   const res = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
   return res.json();
 }
+
+export async function updateFuncionario(id, funcionario) {
+  const res = await fetch(`${API_URL}/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(funcionario),
+  });
+  return res.json();
+}
