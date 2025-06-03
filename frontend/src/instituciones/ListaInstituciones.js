@@ -113,8 +113,8 @@ export default function ListaInstituciones() {
             ) : (
               <>
                 <span style={{fontWeight:600,fontSize:18,letterSpacing:0.2}}>{i.nombre_institucion}</span>
-                <div>
-                  <button onClick={() => handleEditClick(i)} style={{background:'#f1c40f',color:'#fff',border:'none',borderRadius:4,padding:'6px 14px',marginRight:6,cursor:'pointer'}}>Editar</button>
+                <div style={{display:'inline-flex',gap:6}}>
+                  <button onClick={() => handleEditClick(i)} style={{background:'#f1c40f',color:'#fff',border:'none',borderRadius:4,padding:'6px 14px',marginRight:0,cursor:'pointer'}}>Editar</button>
                   <button onClick={() => handleDelete(i.id_institucion)} style={{background:'#e74c3c',color:'#fff',border:'none',borderRadius:4,padding:'6px 14px',cursor:'pointer'}}>Eliminar</button>
                 </div>
               </>
