@@ -19,3 +19,12 @@ export async function deleteInstitucion(id) {
   const res = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
   return res.json();
 }
+
+export async function updateInstitucion(id, institucion) {
+  const res = await fetch(`${API_URL}/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(institucion),
+  });
+  return res.json();
+}
